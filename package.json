@@ -4,10 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "clean": "rm -rf ./docs && git checkout ./docs/CNAME",
     "dev": "bun run dev/index.ts",
-    "build": "bun build public/en/index.html --outdir en/ && bun build public/ja/index.html --outdir ja/ && bun build public/index.html --outdir ./",
-    "docs:dev": "bunx vitepress dev docs",
-    "docs:build": "bunx vitepress build docs"
+    "build": "bun run clean && bun build public/en/index.html --root public --outdir ./docs && bun build public/ja/index.html --root public --outdir ./docs && bun build public/index.html --root public --outdir ./docs",
+    "doc:dev": "bunx vitepress dev doc",
+    "doc:build": "bunx vitepress build doc"
   },
   "dependencies": {
     "@blockly/theme-dark": "^13.1.0",
